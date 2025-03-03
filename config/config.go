@@ -10,6 +10,7 @@ type Config struct {
 	Postgres PostgresConfig
 	Http     HttpConfig
 	Jwt      JwtConfig
+	App      AppConfig
 }
 
 type PostgresConfig struct {
@@ -29,6 +30,10 @@ type JwtConfig struct {
 	SecretKey string
 }
 
+type AppConfig struct {
+	OriginDomain string
+}
+
 func NewConfig() Config {
 	cfg := Config{
 		Http: HttpConfig{
@@ -44,6 +49,9 @@ func NewConfig() Config {
 		},
 		Jwt: JwtConfig{
 			SecretKey: os.Getenv(constants.SecretKey),
+		},
+		App: AppConfig{
+			OriginDomain: os.Getenv(constants.APIHost),
 		},
 	}
 
