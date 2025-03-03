@@ -9,6 +9,7 @@ import (
 	"syscall"
 
 	"github.com/dinata1312/TechGP-Project/config"
+	"github.com/dinata1312/TechGP-Project/docs"
 	receiptHandler "github.com/dinata1312/TechGP-Project/internal/domain/receipt/handler"
 	receiptService "github.com/dinata1312/TechGP-Project/internal/domain/receipt/service"
 	"github.com/dinata1312/TechGP-Project/internal/repositories/receipt_repo/receipt_pg"
@@ -58,7 +59,7 @@ func (s *server) Run() {
 	signal.Notify(ch, os.Interrupt)
 	signal.Notify(ch, syscall.SIGTERM)
 
-	// docs.SwaggerInfo.Host = fmt.Sprintf("%s%s", s.cfg.Http.Host, s.cfg.Http.Port)
+	docs.SwaggerInfo.Host = fmt.Sprintf("%s%s", s.cfg.Http.Host, s.cfg.Http.Port)
 
 	// internalJWT := internal_jwt.NewInternalJwt()
 

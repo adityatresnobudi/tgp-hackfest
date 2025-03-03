@@ -30,7 +30,7 @@ func NewReceiptHandler(
 // @Tags receipts
 // @Produce json
 // @Success 200 {object}  GetAllByIdResponse
-// @Router /detail-bill/{bill-id}/{user-id} [get]
+// @Router /detail-bill/{bill-id} [get]
 func (r *receiptHandler) GetReceipt(c *gin.Context) {
 	billId := c.Param("id")
 	userId := c.Query("userId")

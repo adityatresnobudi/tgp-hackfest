@@ -10,4 +10,4 @@ type ProductDTO struct {
 	Discount    float64   `json:"discount" example:"0"`
 	Tax         float64   `json:"tax" example:"11"`
 	Service     float64   `json:"service" example:"0"`
-}
+} // @name ProductDTO

@@ -1,0 +1,73 @@
+definitions:
+  GetAllByIdResponse:
+    properties:
+      category:
+        example: Makanan
+        type: string
+      receipts:
+        items:
+          $ref: '#/definitions/ReceiptDTO'
+        type: array
+      title:
+        example: Toko Test
+        type: string
+      total:
+        example: 38850
+        type: number
+    type: object
+  ProductDTO:
+    properties:
+      discount:
+        example: 0
+        type: number
+      id:
+        example: f5063dca-556c-4723-931b-cbade7ca139a
+        type: string
+      price:
+        example: 15000
+        type: number
+      product_name:
+        example: bakso
+        type: string
+      quantity:
+        example: 1
+        type: integer
+      service:
+        example: 0
+        type: number
+      tax:
+        example: 11
+        type: number
+    type: object
+  ReceiptDTO:
+    properties:
+      id:
+        example: f5063dca-556c-4723-931b-cbade7ca139a
+        type: string
+      name:
+        example: adit
+        type: string
+      products:
+        items:
+          $ref: '#/definitions/ProductDTO'
+        type: array
+      total:
+        example: 16650
+        type: number
+    type: object
+info:
+  contact: {}
+paths:
+  /detail-bill/{bill-id}:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/GetAllByIdResponse'
+      summary: Get Receipts By User ID
+      tags:
+      - receipts
+swagger: "2.0"
