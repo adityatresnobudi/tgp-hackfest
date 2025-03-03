@@ -22,7 +22,7 @@ func NewRepo(db *sql.DB) receipt_repo.Repository {
 }
 
 func (r *receiptPG) GetAllById(ctx context.Context, id uuid.UUID) ([]entity.FullReceipt, errs.MessageErr) {
-	rows, err := r.db.QueryContext(ctx, GET_ALL_RECEIPTS)
+	rows, err := r.db.QueryContext(ctx, GET_ALL_RECEIPTS, id)
 
 	if err != nil {
 		log.Printf("db get all receipts: %s\n", err.Error())

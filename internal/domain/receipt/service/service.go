@@ -113,6 +113,10 @@ func (r *receiptServiceIMPL) GetOneByUserId(ctx context.Context, billId, userId 
 		return nil, err
 	}
 
+	if len(fullReceipt) <= 0 {
+		return nil, errs.NewBadRequest("receipt does not exist")
+	}
+
 	resp.Title = fullReceipt[0].StoreName
 	resp.Category = fullReceipt[0].Category
 	resp.TotalBill = fullReceipt[0].TotalBill
