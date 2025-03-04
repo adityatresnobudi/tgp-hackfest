@@ -1,10 +1,11 @@
-package service
+package service_test
 
 import (
 	"context"
 	"net/http"
 	"testing"
 
+	"github.com/dinata1312/TechGP-Project/internal/domain/receipt/service"
 	"github.com/dinata1312/TechGP-Project/internal/entity"
 	"github.com/dinata1312/TechGP-Project/internal/repositories/receipt_repo"
 	"github.com/dinata1312/TechGP-Project/pkg/errs"
@@ -14,7 +15,7 @@ import (
 
 func Test_GetAllById_Success(t *testing.T) {
 	r := receipt_repo.NewRepoMock()
-	s := NewReceiptService(r)
+	s := service.NewReceiptService(r)
 	userId, err := uuid.Parse("f5063dca-556c-4723-931b-cbade7ca139a")
 	assert.NoError(t, err)
 	productId, err := uuid.Parse("516af9d0-d49e-4bac-8cab-932c6b622682")
@@ -67,7 +68,7 @@ func Test_GetAllById_Success(t *testing.T) {
 }
 
 func Test_GetAllById_ErrorIdNotValidUUID(t *testing.T) {
-	s := NewReceiptService(nil)
+	s := service.NewReceiptService(nil)
 
 	ctx := context.TODO()
 
@@ -84,7 +85,7 @@ func Test_GetAllById_ErrorIdNotValidUUID(t *testing.T) {
 
 func Test_GetAllById_ErrorInternalServerError(t *testing.T) {
 	r := receipt_repo.NewRepoMock()
-	s := NewReceiptService(r)
+	s := service.NewReceiptService(r)
 
 	ctx := context.TODO()
 
@@ -105,7 +106,7 @@ func Test_GetAllById_ErrorInternalServerError(t *testing.T) {
 
 func Test_GetAllById_ErrorReceiptDoesNotExist(t *testing.T) {
 	r := receipt_repo.NewRepoMock()
-	s := NewReceiptService(r)
+	s := service.NewReceiptService(r)
 
 	ctx := context.TODO()
 
@@ -126,7 +127,7 @@ func Test_GetAllById_ErrorReceiptDoesNotExist(t *testing.T) {
 
 func Test_GetOneByUserId_Success(t *testing.T) {
 	r := receipt_repo.NewRepoMock()
-	s := NewReceiptService(r)
+	s := service.NewReceiptService(r)
 	userId, err := uuid.Parse("f5063dca-556c-4723-931b-cbade7ca139a")
 	assert.NoError(t, err)
 	productId, err := uuid.Parse("516af9d0-d49e-4bac-8cab-932c6b622682")
@@ -179,7 +180,7 @@ func Test_GetOneByUserId_Success(t *testing.T) {
 }
 
 func Test_GetOneByUserId_ErrorBillIdNotValidUUID(t *testing.T) {
-	s := NewReceiptService(nil)
+	s := service.NewReceiptService(nil)
 
 	ctx := context.TODO()
 
@@ -195,7 +196,7 @@ func Test_GetOneByUserId_ErrorBillIdNotValidUUID(t *testing.T) {
 }
 
 func Test_GetOneByUserId_ErrorUserIdNotValidUUID(t *testing.T) {
-	s := NewReceiptService(nil)
+	s := service.NewReceiptService(nil)
 
 	ctx := context.TODO()
 
@@ -212,7 +213,7 @@ func Test_GetOneByUserId_ErrorUserIdNotValidUUID(t *testing.T) {
 
 func Test_GetOneByUserId_ErrorInternalServerError(t *testing.T) {
 	r := receipt_repo.NewRepoMock()
-	s := NewReceiptService(r)
+	s := service.NewReceiptService(r)
 
 	ctx := context.TODO()
 
@@ -233,7 +234,7 @@ func Test_GetOneByUserId_ErrorInternalServerError(t *testing.T) {
 
 func Test_GetOneByUserId_ErrorReceiptDoesNotExist(t *testing.T) {
 	r := receipt_repo.NewRepoMock()
-	s := NewReceiptService(r)
+	s := service.NewReceiptService(r)
 
 	ctx := context.TODO()
 
