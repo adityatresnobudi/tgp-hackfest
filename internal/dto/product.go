@@ -4,7 +4,7 @@ import "github.com/google/uuid"
 
 type ProductDTO struct {
 	Id          uuid.UUID `json:"id" example:"f5063dca-556c-4723-931b-cbade7ca139a"`
-	ProductName string    `json:"product_name" example:"bakso"`
+	ProductName string    `json:"productName" example:"bakso"`
 	Price       float64   `json:"price" example:"15000"`
 	Quantity    int       `json:"quantity" example:"1"`
 	Discount    float64   `json:"discount" example:"0"`
